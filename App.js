@@ -8,7 +8,13 @@ export default function App() {
   const [isAddMode, setIsAddMode] = useState(false);
   const [goals, setGoals] = useState([]);
 
+  // When you add a goal: Add it to the array of goals and close the modal
   const addGoalHandler = enteredGoal => {
+    // Ensure that the goal is not blank
+    if (enteredGoal.length === 0) {
+      return;
+    }
+
     setGoals(currentGoals => [
       ...currentGoals,
       { id: Math.random().toString(), value: enteredGoal },
@@ -16,12 +22,14 @@ export default function App() {
     setIsAddMode(false);
   };
 
+  // Filter the goal you want to remove out
   const removeGoalHandler = goalId => {
     setGoals(currentGoals => {
       return currentGoals.filter(goal => goal.id !== goalId);
     });
   };
 
+  // Close the modal when CANCEL is pressed
   const cancelGoalAddHandler = () => {
     setIsAddMode(false);
   };

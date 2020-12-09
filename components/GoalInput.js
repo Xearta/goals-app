@@ -4,10 +4,12 @@ import { View, TextInput, Button, StyleSheet, Modal } from 'react-native';
 const GoalInput = ({ visible, addGoalHandler, onCancel }) => {
   const [enteredGoal, setEnteredGoal] = useState('');
 
+  // Change the state when the goal input is changed
   const goalInputHandler = enteredText => {
     setEnteredGoal(enteredText);
   };
 
+  // Add the goal when 'ADD' is pressed, clear out the field, and close the modal
   const onAddGoal = () => {
     addGoalHandler(enteredGoal);
     setEnteredGoal('');
